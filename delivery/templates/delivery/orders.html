@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      /* Global styling */
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #fceabb, #f8b500);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* Container styling */
+      .container {
+        background-color: #ffffffcc;
+        padding: 40px 50px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+      }
+
+      /* Headings */
+      h1 {
+        font-size: 30px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #34495e;
+        margin-bottom: 10px;
+      }
+
+      /* Paragraphs */
+      p {
+        font-size: 16px;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      p span {
+        font-weight: bold;
+        color: #e67e22;
+      }
+
+      /* Address block */
+      .address {
+        font-weight: bold;
+        color: #333;
+        padding: 10px;
+        border-left: 5px solid #ffffffcc;
+        border-radius: 4px;
+      }
+
+      /* Button styling */
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        padding: 12px 25px;
+        background-color: #e67e22;
+        color: white;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .btn:hover {
+        background-color: #d35400;
+        transform: scale(1.05);
+      }
+    </style>
+    <title>Order Summary</title>
+  </head>
+  <body>
+    {% block content %}
+    <div class="container">
+      <h1>Thank you for your order, {{ username }}! 🎉</h1>
+
+      <h2>Delivery Address</h2>
+      <p class="address">{{ res.address }}</p>
+
+      <p class="info">
+        Your order will be delivered to this location shortly.<br>Thank you for choosing<br> <span>Meal Mate</span>!
+      </p>
+
+      {% if cart_items %}
+      <a href="{% url 'cusmenu' cart_items.0.restaurant.id username %}" class="btn">
+        Back to Restaurants
+      </a>
+      {% else %}
+      <a href="/" class="btn">Back to Home</a>
+      {% endif %}
+    </div>
+    
+{% endblock %}
+  </body>
+</html>

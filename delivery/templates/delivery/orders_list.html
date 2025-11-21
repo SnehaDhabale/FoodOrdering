@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+
+        table {
+            width: 80%;
+            margin: 25px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        table thead {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: center;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Orders</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>User_Name</th>
+            <th>User_Email</th>
+            <th>Product_Name</th>
+            <th>Product_Price</th>
+            <th>Product_Quantity</th>
+            <th>Total_Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+        {% for item in order.items.all %}
+        <tr>
+            <td>{{ order.customer.username }}</td>
+            <td>{{ order.customer.email }}</td>
+            <td>{{ item.item.item_name }}</td>
+            <td>{{ item.item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total_price }}</td>
+            <td>{{ order.date }}</td>
+        </tr>
+        {% endfor %}
+    {% empty %}
+        <tr>
+            <td colspan="7">No Orders Found</td>
+        </tr>
+    {% endfor %}
+</tbody>
+
+</table>
+</body>
+</html>

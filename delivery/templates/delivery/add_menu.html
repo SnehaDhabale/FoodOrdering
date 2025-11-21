@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Menu</title>
+
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+
+    }
+    .container {
+        width: 480px;
+        margin: 60px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+        font-size: 26px;
+        font-weight: 600;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+        color: #444;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="url"],
+    textarea {
+        width: 95%;
+        padding: 10px 14px;
+        margin-bottom: 18px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.2s ease-in-out;
+        font-size: 15px;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 5px rgba(74,144,226,0.3);
+    }
+
+    textarea {
+        height: 90px;
+        resize: none;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+
+    .checkbox-container label {
+        margin: 0 0 0 8px;
+        font-weight: 500;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #4CAF50;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #3e8e41;
+    }
+
+    .back-btn {
+        text-align: center;
+        display: block;
+        margin-top: 15px;
+        text-decoration: none;
+        font-size: 14px;
+        color: #4a90e2;
+    }
+
+    .back-btn:hover {
+        text-decoration: underline;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Add Menu for {{ restaurant.Res_name }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Item Name:</label>
+        <input type="text" name="item_name" required>
+
+        <label>Description:</label>
+        <textarea name="description"></textarea>
+
+        <label>Price:</label>
+        <input type="number" name="price" step="0.01" required>
+
+        <div class="checkbox-container">
+            <input type="checkbox" name="is_available">
+            <label>Available</label>
+        </div>
+
+        <label>Category:</label>
+        <input type="text" name="category" required>
+
+        <label>Image URL:</label>
+        <input type="url" name="img" placeholder="https://example.com/image.jpg">
+
+        <button type="submit" class="btn">Save Menu</button>
+
+        <a href="{% url 'delivery:admin_menu' id=restaurant.id %}" class="back-btn">← Back to Menu List</a>
+    </form>
+</div>
+
+</body>
+</html>

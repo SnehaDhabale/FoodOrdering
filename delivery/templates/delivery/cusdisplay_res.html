@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery</title>
+    <style>
+
+    nav {
+        background-color: #1d1a1a;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+       nav h2 {
+        color: #fff;
+        font-size: 24px;
+        margin: 0;
+        padding-right: 850px;
+      }
+
+      .hero-image img {
+        height: 80px; /* Adjust this as needed (e.g., 40px–80px) */
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px; /* Optional: rounded corners */
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        margin-left: 15px;
+        padding: 10px 18px;
+        font-weight: 600;
+        border-radius: 6px;
+        color: #fff;
+        transition: all 0.3s ease;
+        background-color: transparent;
+        border: 2px solid  #ffa726;
+      }
+
+      .nav-links a:hover {
+        background-color:  #ffa726;
+        transform: scale(1.05);
+      }
+
+    /* Heading */
+    h1 {
+      text-align: center;
+      margin: 50px 0 30px;
+      font-size: 36px;
+      color: #333;
+    }
+
+    /* Restaurant Cards Layout */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 0 40px 60px;
+    }
+
+    /* Each Card */
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .card h3 {
+      margin: 15px 0 8px;
+      font-size: 20px;
+      color: #2a2a2a;
+    }
+
+    .card p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .card button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      border: none;
+      background-color:#e67e22;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .card button:hover {
+      background-color:  #cf711f;
+    }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="hero-image">
+        <a href="{% url 'delivery:customer_home' %}">
+          <img src="{% static 'delivery/images/logo3.jpg' %}" alt="Indian Dish">
+        </a>
+      </div>
+      <h2 style="color: white">Indian Food Restaurant</h2>
+      <div class="nav-links">
+        <a href="{% url 'delivery:about' %}">About Us</a>
+        <a href="{% url 'delivery:show_cart' username %}">Show Cart </a>
+      </div>
+    </nav>
+  </body>
+    {% block contents %} {% endblock contents %}
+</html>
+
+<!--After Nav Bar-->
+<html>
+<body>
+  <h1>Hi {{username}} Explore the restaurants..!</h1>
+  <div class="container">
+    {% for item in li %}
+    <div class="card">
+      <img src="{{ item.img }}" alt="Restaurant Image" />
+      <h3>{{ item.Res_name }}</h3>
+      <p><strong>Category:</strong> {{ item.Food_cat }}</p>
+      <p><strong>Rating:</strong> {{ item.rating }}/5</p>
+      <p><strong>Address:</strong> {{ item.address }}</p>
+      <a href="{% url 'delivery:cusmenu' item.id username %}">
+        <button>View Menu</button>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
+ 

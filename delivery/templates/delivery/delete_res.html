@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Delete Menu Item</title>
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #fceabb, #f8b500);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 420px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        text-align: center;
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+        color: #333;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .btn-danger, .btn-cancel {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-danger {
+        background: #e63946;
+        color: white;
+        margin-right: 10px;
+    }
+
+    .btn-danger:hover {
+        background: #c62832;
+    }
+
+    .btn-cancel {
+        background: #4a90e2;
+        color: white;
+    }
+
+    .btn-cancel:hover {
+        background: #276ecf;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Delete Menu Item</h2>
+
+    <p>Are you sure you want to delete <strong>{{ item.res }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn-danger">Yes, Delete</button>
+
+        <a href="{% url 'delivery:admin_res' %}" class="btn-cancel">
+            Cancel
+        </a>
+    </form>
+</div>
+
+</body>
+</html>

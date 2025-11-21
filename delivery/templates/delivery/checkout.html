@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      /* General Reset & Font */
+      body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+      .checkout-container {
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 90%;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 28px;
+        color:  #ff9800;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 22px;
+        color: #222;
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      table thead {
+        background-color: #ffe0b2;
+      }
+
+      th,
+      td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+        color: #333;
+      }
+
+      tr:nth-child(even) {
+        background-color: #fdf4e3;
+      }
+
+      #error-message {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      #rzp-button {
+        margin-top: 30px;
+        padding: 14px 28px;
+        font-size: 16px;
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      #rzp-button:hover {
+        background-color: #fb8c00;
+        transform: translateY(-2px);
+      }
+
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        table {
+          width: 90%;
+        }
+
+        #rzp-button {
+          width: 90%;
+        }
+      }
+
+    </style>
+    <title>Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </head>
+  <body>
+    <div class="checkout-container">
+      <h1>Checkout</h1>
+      <h2>Welcome, {{ username }}</h2>
+
+      {% if error %}
+        <p id="error-message">{{ error }}</p>
+      {% else %}
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in cart_items %}
+            <tr>
+              <td>{{ c.item.item_name }}</td>
+              <td>₹{{ total_price }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h3>Total: ₹{{ total_price }}</h3>
+
+        <button id="rzp-button">Pay with Razorpay</button>
+      {% endif %}
+    </div>
+    <script>
+      var options = {
+        key: "{{ razorpay_key_id }}", // Razorpay API key
+        amount: "{{ total_price|floatformat:2|add:'0.00'|floatformat:2 }}00", // Amount in paisa
+        currency: "INR",
+        name: "Meal Mate",
+        description: "Order Payment",
+        order_id: "{{ order_id }}", // Razorpay order ID
+
+        handler: function (response) {
+          alert("Payment Successful!");
+          window.location.href = "{% url 'delivery:save_order' username %}";
+        },
+
+        // handler: function (response) {
+        //   alert("Payment Successful!");
+        //   // Redirect to the orders page
+        //   window.location.href = "{% url 'delivery:orders' username %}";
+        // },
+        prefill: {
+          name: "{{ username }}",
+          email: "customer@example.com",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#528FF0",
+        },
+      };
+      var rzp = new Razorpay(options);
+
+      document.getElementById("rzp-button").onclick = function (e) {
+        rzp.open();
+        e.preventDefault();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery</title>
+    <style>
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 40px;
+        border-radius: 0 0 12px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .hero-image img {
+        height: 80px; /* Adjust this as needed (e.g., 40px–80px) */
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px; /* Optional: rounded corners */
+      }
+
+      nav h2 {
+        color: #fff;
+        font-size: 24px;
+        margin: 0;
+        padding-right: 850px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        margin-left: 15px;
+        padding: 10px 18px;
+        font-weight: 600;
+        border-radius: 6px;
+        color: #fff;
+        transition: all 0.3s ease;
+        background-color: transparent;
+        border: 2px solid  #ffa726;
+      }
+
+      .nav-links a:hover {
+        background-color:  #ffa726;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="hero-image">
+        <img src="{% static 'delivery/images/logo3.jpg' %}" alt="Indian Dish">
+      </div>
+      <h2 style="color: #fff">Indian Food Restaurant</h2>
+      <div class="nav-links">
+        <a href="{% url 'delivery:about' %}">About Us</a>
+        <a href="{% url 'delivery:sign_in' %}">Sign In</a>
+      </div>
+    </nav>
+  </body>
+</html>
+
+<div style="margin-top: 50px"></div>
+
+
+<!-- After Nav Bar -->
+<html>
+<head>
+  <style>
+   body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('/static/delivery/images/dining.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+/* ::before pseudo-element to create the dark overlay */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
+  z-index: 0;
+}
+
+.hero-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 1;
+  padding: 20px;
+}
+
+.hero-section h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.hero-section .restaurant {
+  background-color: transparent;
+  color: #ffa726;
+  margin-left: 10px;
+}
+
+.tagline, .location, .description {
+  font-size: 18px;
+  color: #f5f5f5;
+}
+
+.feature-icons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.feature {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  background-color:  #ffa726;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid  #ffa726;
+  color: #ffa726;
+}
+
+  </style> 
+  <title>Document</title>
+</head>
+<body>
+  <div class="hero-section">
+    <div class="hero-text">
+      <p class="tagline">We are open</p>
+      <h1><span class="highlight">Indian Food</span> <span class="restaurant">Restaurant</span></h1>
+      <p class="location">Order From Your Favorite Restaurants Near You</p>
+      
+      <div class="feature-icons">
+        <div class="feature">🚚 Fast Delivery</div>
+        <div class="feature">📦 Take Away</div>
+        <div class="feature">🍽️ Dine In</div>
+      </div>
+
+      <p class="description">
+        Experience the richness of Indian flavors. Enjoy our delicious menu from the comfort of your home or dine with us!
+      </p>
+
+      <div class="button-group">
+        <a href="{% url 'delivery:sign_up' %}" class="btn">Sign Up</a>
+        <a href="{% url 'delivery:sign_in' %}" class="btn btn-outline">Sign In</a>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
