@@ -1,7 +1,8 @@
 
-                                      # 🍽️ **MealMate – Online Food Ordering System**
+                                    # 🍽️ **MealMate – Online Food Ordering System**
 
 <img width="1913" height="915" alt="Screenshot 2025-11-21 175205" src="https://github.com/user-attachments/assets/d911056f-e8b5-4eb2-8ec8-1f95ccb626e1" />
+
 
 MealMate is a smart and intuitive online food ordering platform built using **Python Django**, offering seamless restaurant browsing, menu exploration, cart management, and secure online payments through **Razorpay**.
 Designed with a clean UI and smooth workflows, MealMate delivers speed, convenience, and reliability for both customers and admins—bringing a complete food-ordering ecosystem to life.
