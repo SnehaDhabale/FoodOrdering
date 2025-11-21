@@ -1,6 +1,5 @@
 
-                                           <h1 align="center" style="font-size:40px;"><b>🍽️ MealMate – Online Food Ordering System</b></h1>
-
+                                        ## 🍽️ **MealMate – Online Food Ordering System**
 
 <img width="1913" height="915" alt="Screenshot 2025-11-21 175205" src="https://github.com/user-attachments/assets/d911056f-e8b5-4eb2-8ec8-1f95ccb626e1" />
 
