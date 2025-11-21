@@ -1,81 +1,78 @@
-🍽️ MealMate – Online Food Ordering System
-![Uploading image.png…]()
+<img width="1913" height="915" alt="Screenshot 2025-11-21 175205" src="https://github.com/user-attachments/assets/d4e57864-c965-4e6d-8c31-ad01a49a4bd5" />
+# 🍽️ **MealMate – Online Food Ordering System**
 
-MealMate is an intuitive and efficient online food ordering system designed to simplify the way customers browse menus, add items to their cart, and place orders. Built using Python Django, it ensures a smooth and secure ordering experience with real-time cart updates and Razorpay payment integration. The platform provides a clean user interface for customers and powerful management tools for admins. MealMate delivers convenience, speed, and reliability—bringing a complete food ordering solution to life.
-🚀 Project Overview
+<img width="1913" height="915" alt="Screenshot 2025-11-21 175205" src="https://github.com/user-attachments/assets/d911056f-e8b5-4eb2-8ec8-1f95ccb626e1" />
 
-MealMate is a full-stack online food ordering system that allows users to:
+MealMate is a smart and intuitive online food ordering platform built using **Python Django**, offering seamless restaurant browsing, menu exploration, cart management, and secure online payments through **Razorpay**.
+Designed with a clean UI and smooth workflows, MealMate delivers speed, convenience, and reliability for both customers and admins—bringing a complete food-ordering ecosystem to life.
 
-Browse restaurants & food menus
+---
 
-Add items to cart
+## 🚀 **Project Overview**
 
-Place orders
+MealMate allows users to:
 
-Make secure online payments (Razorpay)
+✔ Browse nearby restaurants & menus
+✔ Add/remove items from the cart
+✔ Increase/decrease item quantities
+✔ Place secure online orders
+✔ Make payments via Razorpay
+✔ Track and store order history
+✔ Admin-side menu & restaurant management
 
-Manage restaurants (Admin Panel)
+This project combines a robust **Django backend** with a responsive **HTML, CSS, JS** frontend.
 
-This project is built using Django (Backend) and HTML, CSS, JavaScript (Frontend).
+---
 
-🛠️ Tech Stack
-Frontend
+## 🛠️ **Tech Stack**
 
-HTML5
+### **🔹 Frontend**
 
-CSS3
+* HTML5
+* CSS3
+* JavaScript
 
-JavaScript
+### **🔹 Backend**
 
+* Python
+* Django Framework
+* SQLite Database
 
-Backend
+### **🔹 Payment Gateway**
 
-Python
+* Razorpay
 
-Django Framework
+---
 
-SQLite 
+## 📌 **Features**
 
-Payment Integration
+### 👤 **User Features**
 
-Razorpay
+* Login & Signup
+* Browse restaurant menus
+* Add items to cart
+* Modify item quantities
+* Online payments
+* Order confirmation page
 
-📌 Features
-👤 User Features
+### 🛍️ **Cart & Orders**
 
-User Login / Signup
+* Auto-updating cart
+* Dynamic total price calculation
+* Order storage in database
+* Admin-side order overview
 
-Browse restaurant menu
+### 🛠️ **Admin Features**
 
-Add to cart
+* Add / Edit / Delete menu items
+* Manage restaurants
+* View all customer orders
 
-Increase/Decrease quantity
+---
 
-Online Payment
+## 📂 **Project Structure**
 
-Order Confirmation Page
-
-
-🛍️ Cart & Orders
-
-Dynamic cart update
-
-Auto Total Price Calculation
-
-Store order details
-
-Order management for admin
-
-🛠️ Admin Features
-
-Add/Edit/Delete menu items
-
-View all customer orders
-
-Manage customers & restaurants
-
-📂 Project Structure
-
+```
 MealMate/
 │── delivery/
 │   ├── models.py
@@ -88,54 +85,122 @@ MealMate/
 │── manage.py
 │── requirements.txt
 │── README.md
+```
 
-Installation & Setup
-1. Clone the Repository
+---
+
+## ⚙️ **Installation & Setup**
+
+### **1️⃣ Clone the Repository**
+
+```bash
 git clone https://github.com/your-username/mealmate.git
 cd mealmate
-2. Set Up a Virtual Environment
-python3 -m venv venv
-source venv/bin/activate  # For Mac/Linux
-3. Install Dependencies
+```
+
+### **2️⃣ Set Up Virtual Environment**
+
+```bash
+python -m venv venv
+venv\Scripts\activate        # Windows
+source venv/bin/activate     # Mac/Linux
+```
+
+### **3️⃣ Install Dependencies**
+
+```bash
 pip install -r requirements.txt
-4. Apply Migrations
+```
+
+### **4️⃣ Apply Migrations**
+
+```bash
 python manage.py migrate
-5. Create a Superuser
+```
+
+### **5️⃣ Create Superuser**
+
+```bash
 python manage.py createsuperuser
-6. Run the Development Server
+```
+
+### **6️⃣ Run the Server**
+
+```bash
 python manage.py runserver
-Now, open your browser and go to http://127.0.0.1:8000/
+```
 
-💳 Razorpay Setup
+Open: **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)** 🎉
 
-Add the following to your project settings or .env file:
+---
 
+## 💳 **Razorpay Setup**
+
+Add this to your **.env** or **settings.py**:
+
+```
 RAZORPAY_KEY_ID=your_key_id
 RAZORPAY_KEY_SECRET=your_key_secret
+```
 
-🍽️ API Endpoints – MealMate Project
-📌 User & Authentication
-Method	Endpoint	Description
-POST	/auth/register/	Register a new user
-POST	/auth/login/	User login
-GET	/auth/profile/	Get user profile
-📌 Restaurants
-Method	Endpoint	Description
-GET	/restaurants/	List all restaurants
-POST	/restaurants/add/	Add a new restaurant
-PUT	/restaurants/update/<id>/	Update restaurant details
-DELETE	/restaurants/delete/<id>/	Delete a restaurant
-📌 Menu
-Method	Endpoint	Description
-GET	/menu/	Get all menu items
-GET	/menu/<id>/	Get a single menu item
-POST	/menu/add/	Add menu item (Admin)
-PUT	/menu/update/<id>/	Update menu item
-DELETE	/menu/delete/<id>/	Delete menu item
-📌 Cart
-Method	Endpoint	Description
-GET	/cart/<username>/	View user cart
-POST	/cart/add/	Add item to cart
-PUT	/cart/update/<item_id>/	Update quantity
-DELETE	/cart/remove/<item_id>/	Remove item
-DELETE	/cart/clear/<username>/	Clear full cart
+---
+
+# 🍽️ **API Endpoints – MealMate**
+
+## 🔐 **User & Authentication**
+
+| Method | Endpoint          | Description         |
+| ------ | ----------------- | ------------------- |
+| POST   | `/auth/register/` | Register a new user |
+| POST   | `/auth/login/`    | User login          |
+| GET    | `/auth/profile/`  | Get user profile    |
+
+---
+
+## 🏪 **Restaurants**
+
+| Method | Endpoint                    | Description               |
+| ------ | --------------------------- | ------------------------- |
+| GET    | `/restaurants/`             | List all restaurants      |
+| POST   | `/restaurants/add/`         | Add a new restaurant      |
+| PUT    | `/restaurants/update/<id>/` | Update restaurant details |
+| DELETE | `/restaurants/delete/<id>/` | Delete a restaurant       |
+
+---
+
+## 🍲 **Menu**
+
+| Method | Endpoint             | Description           |
+| ------ | -------------------- | --------------------- |
+| GET    | `/menu/`             | Get all menu items    |
+| GET    | `/menu/<id>/`        | Get single menu item  |
+| POST   | `/menu/add/`         | Add menu item (Admin) |
+| PUT    | `/menu/update/<id>/` | Update menu item      |
+| DELETE | `/menu/delete/<id>/` | Delete menu item      |
+
+---
+
+## 🛒 **Cart**
+
+| Method | Endpoint                  | Description           |
+| ------ | ------------------------- | --------------------- |
+| GET    | `/cart/<username>/`       | View user cart        |
+| POST   | `/cart/add/`              | Add item to cart      |
+| PUT    | `/cart/update/<item_id>/` | Update item quantity  |
+| DELETE | `/cart/remove/<item_id>/` | Remove item from cart |
+| DELETE | `/cart/clear/<username>/` | Clear entire cart     |
+
+---
+
+## 📦 **Orders**
+
+| Method | Endpoint               | Description              |
+| ------ | ---------------------- | ------------------------ |
+| POST   | `/order/create/`       | Create a new order       |
+| GET    | `/order/<username>/`   | Get user orders          |
+| GET    | `/orders/list/`        | Admin – list all orders  |
+| GET    | `/order/details/<id>/` | Get single order details |
+
+---
+
+If you want, I can convert this into a **README with badges, screenshots, section dividers, or advanced formatting** for GitHub.
