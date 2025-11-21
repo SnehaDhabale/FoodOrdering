@@ -1,5 +1,5 @@
-<img width="1913" height="915" alt="Screenshot 2025-11-21 175205" src="https://github.com/user-attachments/assets/d4e57864-c965-4e6d-8c31-ad01a49a4bd5" />
-# 🍽️ **MealMate – Online Food Ordering System**
+
+                                            🍽️ **MealMate – Online Food Ordering System**
 
 <img width="1913" height="915" alt="Screenshot 2025-11-21 175205" src="https://github.com/user-attachments/assets/d911056f-e8b5-4eb2-8ec8-1f95ccb626e1" />
 
@@ -201,6 +201,4 @@ RAZORPAY_KEY_SECRET=your_key_secret
 | GET    | `/orders/list/`        | Admin – list all orders  |
 | GET    | `/order/details/<id>/` | Get single order details |
 
----
 
-If you want, I can convert this into a **README with badges, screenshots, section dividers, or advanced formatting** for GitHub.
